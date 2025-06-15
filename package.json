@@ -1,0 +1,30 @@
+{
+  "name": "reactapp",
+  "version": "1.0.0",
+  "description": "react session 2",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sindhu-Chinnaswamy31/ReactProject.git"
+  },
+  "author": "sindhu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sindhu-Chinnaswamy31/ReactProject/issues"
+  },
+  "homepage": "https://github.com/Sindhu-Chinnaswamy31/ReactProject#readme",
+  "devDependencies": {
+    "parcel": "^2.15.2"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
