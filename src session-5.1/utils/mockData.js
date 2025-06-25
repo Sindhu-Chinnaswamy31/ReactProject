@@ -1692,7 +1692,7 @@ export const restaurantList = [
       type: "restaurant",
       data: {
         type: "F",
-        id: "66465678",
+        id: "6646567",
         name: "Cheezylicious Cafe",
         uuid: "5880e561-10ed-4f96-990b-2251e2f09c82",
         city: "21",
