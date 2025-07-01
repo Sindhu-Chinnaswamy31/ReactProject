@@ -8,7 +8,7 @@ const Body = () => {
     // const [listOfRestaurants, setListOfRestaurants] = useState(restaurantList);
     const [searchQuery, setSearchQuery] = useState('');
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
-
+    //when ever state variable update, react triggers a re-render of the component
 
     // synatx of useEffect hook
     // useEffect(() => {
