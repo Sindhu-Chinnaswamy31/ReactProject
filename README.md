@@ -98,4 +98,8 @@ import {Component} from "path";
  - Install @babel/preset-react - to make JSX work in test cases
  - Include @babel/preset-react inside my babel config
  - npm i -D @testing-library/jest-dom
+
+
+react-router-dom@7.6.3 does not export RouterProvider or createBrowserRouter — because v7 is a completely new experimental release and not compatible with v6.x APIs.
+npm install react-router-dom@6.23.0 react-router@6.23.0
  
