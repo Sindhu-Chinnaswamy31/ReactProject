@@ -1,6 +1,8 @@
 import RestaurantCard from "./RestroCard";
 import {useState, useEffect} from "react";
 import Shimmer from "./Shimmer";
+import {SWIGGY_API_URL} from "../utils/contants";
+import {Link} from "react-router-dom";
 const Body = () => {
     //React hook normal javascript function, it is a utility function it give us some utility.
     //Local State variable - super powerfull variable  
@@ -26,7 +28,7 @@ const Body = () => {
         // "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
 
         const data = await fetch(
-            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+            SWIGGY_API_URL
         ); // give us from js engine, Fetch will retrun promise
         const json = await data.json();
         //console.log(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
@@ -68,7 +70,9 @@ const Body = () => {
         <div className="res-container">
             {
                 listOfRestaurants.map((restaurant) => (
-                    <RestaurantCard key={restaurant.id} resData={restaurant}/>
+                    <Link to={`/restaurant/${restaurant.info.id}`} key={restaurant.info.id}>
+                        <RestaurantCard key={restaurant.id} resData={restaurant} />
+                    </Link>
                 ))
             }
         </div>

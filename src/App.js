@@ -7,7 +7,7 @@ import About from "./components/About";
 import ContactUs from "./components/ContactUs";
 import Cart from "./components/Cart";
 import Error from "./components/Error";
-
+import RestroMenuPage from "./components/RestroMenuPage";
 
 //  function Outlet(props: OutletProps): React.ReactElement | null
 // import Outlet
@@ -46,6 +46,10 @@ const appRouter = createBrowserRouter([
                 path: "/cart",
                 element : <Cart/>
             },
+            {
+                path: "/restaurant/:resId",  // :id used for dynamic routing
+                element : <RestroMenuPage/>
+            }
         ],
         errorElement : <Error/>
     },  
