@@ -102,4 +102,37 @@ import {Component} from "path";
 
 react-router-dom@7.6.3 does not export RouterProvider or createBrowserRouter — because v7 is a completely new experimental release and not compatible with v6.x APIs.
 npm install react-router-dom@6.23.0 react-router@6.23.0
+
+
+- in classs component first constructor will call later render method will call.
+- when the parent component will loaded
+ - contructor will call then render will call so their it will see the child component and it will trigger the child life cycle after compliting the mounted of children after that parent did mount will call
+    - Parent constructor called
+    - Parent render called
+    - child constructor called
+    - child render called
+    - child component did mount called
+    - parent component did mount called
+
+  - component did mount use : is used to make API calls.
+  - when we have two child component
+    Parent constructor called
+    Parent render called
+    child constructor called
+    First child render called
+    child constructor called
+    Second child render called
+    First child component did mount called
+    Second child component did mount called
+    parent component did mount called
+  - why this is happing means
+    1) constructor will call, then render will call it will update the DOM, once Dom loaded then didmount will call. -> Mounting Life Cycle Method.
+    2) React will batch the render phase of child's component -> optimisation of react -> commit phase will be batched.thats why output will be in this order.
+
+  - Life cycle methods:
+    -> mounting -> 1 execute
+    -> update -> 2 execute
+    -> unmount -> when the component disaper from the html. -> 3 execute
+
+
  
