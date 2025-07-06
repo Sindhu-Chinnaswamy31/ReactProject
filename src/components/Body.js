@@ -3,41 +3,34 @@ import {useState, useEffect} from "react";
 import Shimmer from "./Shimmer";
 import {SWIGGY_API_URL} from "../utils/contants";
 import {Link} from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
-    //React hook normal javascript function, it is a utility function it give us some utility.
-    //Local State variable - super powerfull variable  
-    //When ever the state variable changes, the react component will re-render  
-    // const [listOfRestaurants, setListOfRestaurants] = useState(restaurantList);
     const [searchQuery, setSearchQuery] = useState('');
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
-    //when ever state variable update, react triggers a re-render of the component
-
-    // synatx of useEffect hook
-    // useEffect(() => {
-    //     console.log("useEffect called")}, 
-    // []);
-    // arraow(call back function), dependency array are two params pass to useEffect hook
-    //callback function will after the initial render of the component and also on re-renders if there is a change in the dependency array
-    //useEffect hook will run only once after the initial render of the component and also on re-renders if there is a change in the dependency array
+    
     useEffect(()=>{
         fetchData();
     }, [])
 
     const fetchData = async() => {
-        //to avoid cross error without extension use below link
-        // "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
-
         const data = await fetch(
             SWIGGY_API_URL
         ); // give us from js engine, Fetch will retrun promise
         const json = await data.json();
-        //console.log(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+
         //optional chaning
         const resData = json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
         const filteredRestaurants = resData.filter(
            (res) => res.info.avgRating > 4
         );
        setListOfRestaurants(filteredRestaurants);
+    }
+
+    const onlineStatus = useOnlineStatus();
+    console.log(onlineStatus)
+
+    if(onlineStatus === false){
+        return <h1>Offline, please check your internet connection</h1>
     }
 
     //conditional rendering : rendering based on condition

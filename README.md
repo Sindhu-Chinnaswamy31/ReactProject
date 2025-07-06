@@ -135,4 +135,13 @@ npm install react-router-dom@6.23.0 react-router@6.23.0
     -> unmount -> when the component disaper from the html. -> 3 execute
 
 
+    - when we break our code as small small component/utilities, we test small smal test cases. if all the testcase pass.
+    - reusable, maintanable, testable.
+    - single responsiblity principle.(no hard nad fast rule)
+    - custome hooks: special js function given by react.
+      - hooks are utility functions.
+      - why to create custome hook : it is not mandatory but it is good practice.
+      
+
+
  
