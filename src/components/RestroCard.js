@@ -4,14 +4,13 @@ import {CDN_URL} from "../utils/contants"
 const RestroCard = (props) => {
     const {resData} = props;
     const data = resData.data || resData.info || {};
-    console.log(data)
-    return (<div className="res-card">
-        {<img className="res-logo-image" src={CDN_URL+data.cloudinaryImageId}/>}
-        <h3 className="res-name">{data.name}</h3>
-        <h4 className="res-cuisine">{data.cuisines.join(", ")}</h4>
-        <h4 className="res-delivery">{data.costForTwo}</h4>
-        <h4 className="res-deliveryTime">{data.deliveryTime} mins</h4>
-        <h4 className="res-rating">{data.avgRating} ⭐</h4>
+    return (<div className="m-4 p-4 w-[250px] h-[380px] hover:shadow-2xl bg-gray-200">
+        {<img className="rounded-lg w-[200px] h-[140px] m-1 p-1 relative bottom-4 left-1" src={CDN_URL+data.cloudinaryImageId}/>}
+        <h3 className="font-bold py-1 text-lg">{data.name}</h3>
+        <h4 className="text-lg">{data.cuisines.join(", ")}</h4>
+        <h4 className="text-lg">{data.costForTwo}</h4>
+        <h4 className="text-lg">{data.deliveryTime} mins</h4>
+        <h4 className="text-lg">{data.avgRating} ⭐</h4>
     </div>);
 }
 

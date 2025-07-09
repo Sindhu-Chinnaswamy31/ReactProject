@@ -63,8 +63,8 @@ class UserClass extends React.Component {
         const { name, location, avatar_url } = this.state.userInfo;
         console.log(this.props.name + " child render called");
         return (
-            <div className="user-card">
-                <h1>Count : {count}</h1>
+            <div className="h-auto bg-gray-200 m-4">
+                {/* <h1>Count : {count}</h1>
                 <button onClick={
                     //never update state variable directly, always use setState
                     //this.setState({count : count+1});
@@ -72,11 +72,11 @@ class UserClass extends React.Component {
                     () => {
                         this.setState({count : count+1});//inbuilt keyword setState, it contains the updated value.
                     } //if we want to update with count 2 add it here only no need to create another setState
-                    }>Increment</button>
+                    }>Increment</button> */}
                 {/* <h1>Count2 : {count2}</h1> */}
-                <img className="avatar-class" src={avatar_url}></img>
-                <h2>Name : {name}</h2>
-                <h3>Location : {location}</h3>
+                <img className="w-28 relative top-2 left-[40rem] m-2 rounded-3xl" src={avatar_url}></img>
+                <h2 className="m-1 relative top-2 right-8 font-10 bold text-center">Name : {name}</h2>
+                <h3 className="m-1 relative right-8 font-10 bold text-center">Location : {location}</h3>
                 {/* <h3>Gender : Female</h3>
                 <h3>Location : Banglore</h3> */}
             </div>

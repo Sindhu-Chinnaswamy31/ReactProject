@@ -141,6 +141,35 @@ npm install react-router-dom@6.23.0 react-router@6.23.0
     - custome hooks: special js function given by react.
       - hooks are utility functions.
       - why to create custome hook : it is not mandatory but it is good practice.
+
+
+- install tailwind for css(style)
+  - npm install -D tailwindcss postcss autoprefixer
+  - npx tailwindcss init
+  -   .postcssrc.json // create file in root path
+      {
+        "plugins": {
+          "tailwindcss": {}
+        }
+      }
+  - /src/style.css // create file inside src
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+  - tailwind.config.js
+    module.exports = {
+      content: [
+        "./src/**/*.{js,jsx,ts,tsx}"
+      ],
+      theme: {
+        extend: {},
+      },
+      plugins: [],
+    }
+  - import './styles.css'; /    <link href="/dist/output.css" rel="stylesheet">
+
+
+
       
 
 

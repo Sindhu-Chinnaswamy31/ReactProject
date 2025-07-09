@@ -9,6 +9,7 @@ import Cart from "./components/Cart";
 import Error from "./components/Error";
 import RestroMenuPage from "./components/RestroMenuPage";
 import Shimmer from "./components/Shimmer";
+import '../index.css';
 // import Grocery from "./components/Grocery";
 //  function Outlet(props: OutletProps): React.ReactElement | null
 // import Outlet
@@ -34,7 +35,7 @@ const About = lazy( () => {
 
 const AppLayout = () => {
     return (
-        <div className="app" style={StyleCard}> 
+        <div className="app" > 
             <HeaderComponent />
             <Outlet />
         </div>

@@ -16,9 +16,9 @@ class About extends Component{
     render(){
         console.log("Parent render called");
         return(
-            <div>
-                <h1>About Us</h1>
-                <h4>This is out About Us page</h4>
+            <div className="shadow-md bg-gray-200 m-4">
+                <h1 className="text-2xl font-bold text-center">About Us</h1>
+                <h4 className="text-2xl text-center">This is out About Us page</h4>
                 {/* <User name={"Ankitha nagraj"}/> */}
                 <UserClass name={"Shany agarwal"} />
                 {/* <UserClass name={"Chaithanya agarwal"} /> */}

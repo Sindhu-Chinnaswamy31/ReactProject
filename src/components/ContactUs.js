@@ -1,7 +1,7 @@
 const ContactUs = () =>{
     return(
-        <div>
-            <h1>contact us</h1>
+        <div className="shadow-md bg-gray-200 m-4">
+            <h1 className="text-2xl font-bold text-center">contact us</h1>
         </div>
     )
 }
