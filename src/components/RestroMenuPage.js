@@ -1,15 +1,16 @@
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";    
 import { useParams } from "react-router-dom";
 import { MENU_URL } from "../utils/contants";
 import useRestrurantMenu from "../utils/useRestrurantMenu";
 import { resInfo } from "../utils/menuData"; //resInfo from "../utils/menuData";
-
+import ResCategory from "./ResCategory";
+import { RecommendedMenu } from  "../utils/RecommendedMenu";
 
 const RestroMenuPage = () => {
     const [menu, setMenu] = useState(resInfo);
     const {resId} = useParams(); // utility functions
-
+    const [showIndex, setShowIndex] = useState(null);
     // const resInfo = useRestrurantMenu(resId);
     console.log(resInfo);
     
@@ -30,6 +31,7 @@ const RestroMenuPage = () => {
 
     const {name, cuisines, costForTwoMessage, locality, avgRating, totalRatingsString} = resInfo?.cards[2]?.card?.card?.info;
     const {itemCards} = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+    const category = RecommendedMenu.REGULAR.cards;
     console.log({itemCards});
     return (
         <div className="restro-menu max-w-3xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
@@ -42,6 +44,12 @@ const RestroMenuPage = () => {
             <h3 className="text-md text-yellow-500 font-semibold">{avgRating} ⭐</h3>
             <h3 className="text-md text-gray-500">{totalRatingsString}</h3>
             </div>
+
+            {category.map((category, index) => (
+                <ResCategory key={index} data={category.card} 
+                showItemsData={showIndex === index ? true : false}
+                setShowIndex={() => showIndex === index ? setShowIndex(null) : setShowIndex(index)}/>
+            ))}
 
             <h3 className="text-2xl font-semibold mb-3 border-b pb-1 border-gray-200">Menu</h3>
 
