@@ -169,7 +169,8 @@ npm install react-router-dom@6.23.0 react-router@6.23.0
   - import './styles.css'; /    <link href="/dist/output.css" rel="stylesheet">
 
 
-
+session - 11
+- Higher order component is a function that takes a component and return a component.
       
 
 

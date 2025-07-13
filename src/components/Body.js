@@ -1,19 +1,19 @@
-import RestaurantCard from "./RestroCard";
+import RestaurantCard, { withPromotedLabel } from "./RestroCard";
 import {useState, useEffect} from "react";
 import Shimmer from "./Shimmer";
 import {SWIGGY_API_URL} from "../utils/contants";
 import {Link} from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
-// import {restaurantList} from "../utils/mockData";
+import {restaurantList} from "../utils/mockData";
 
 const Body = () => {
     const [searchQuery, setSearchQuery] = useState('');
-    const [listOfRestaurants, setListOfRestaurants] = useState([]);
-    
-    useEffect(()=>{
-        fetchData();
-    }, [])
+    const [listOfRestaurants, setListOfRestaurants] = useState(restaurantList);
+    const RestrocardPromoted = withPromotedLabel(RestaurantCard);
+    // useEffect(()=>{
+    //     fetchData();
+    // }, [])
 
     const fetchData = async() => {
         const data = await fetch(
@@ -63,11 +63,15 @@ const Body = () => {
                 }}/>
             </div>
         </div>
-        <div className="flex flex-wrap m-10 sm:justify-center bg-yellow-400">
+        <div className="flex flex-wrap m-10 sm:justify-center">
             {
                 listOfRestaurants.map((restaurant) => (
-                    <Link to={`/restaurant/${restaurant.info.id}`} key={restaurant.info.id}>
-                        <RestaurantCard key={restaurant.id} resData={restaurant} />
+                    <Link to={`/restaurant/${restaurant.data.id}`} key={restaurant.data.id}>
+                        {restaurant.data.promoted ?( 
+                            <RestrocardPromoted resData={restaurant} />
+                        ) : (
+                            <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+                        )}
                     </Link>
                 ))
             }
