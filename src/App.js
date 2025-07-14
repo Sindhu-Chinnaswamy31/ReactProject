@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import HeaderComponent from "./components/Header";
 import Body from "./components/Body";
@@ -10,6 +10,7 @@ import Error from "./components/Error";
 import RestroMenuPage from "./components/RestroMenuPage";
 import Shimmer from "./components/Shimmer";
 import '../index.css';
+import UserContext from "./utils/UserContext";
 // import Grocery from "./components/Grocery";
 //  function Outlet(props: OutletProps): React.ReactElement | null
 // import Outlet
@@ -34,11 +35,26 @@ const About = lazy( () => {
 });
 
 const AppLayout = () => {
+    //authentication
+    const [userName, setUserName] = useState('');
+
+    useEffect(() => {
+        //Make API call and send result to setUserInfo
+        const data = {
+            name : "Sindhu",
+            email : "tF6tL@example.com"
+        };
+        setUserName(data.name);
+    }, [])
     return (
-        <div className="app" > 
-            <HeaderComponent />
-            <Outlet />
-        </div>
+        <UserContext.Provider value={{loggedInUser: userName, setUserName}}>  
+            <div className="app" > 
+                {/* <UserContext.Provider value={{loggedInUser: "Gurshreetha"}}>   */}
+                    <HeaderComponent />
+                {/* </UserContext.Provider> */}
+                <Outlet />
+            </div>
+        </UserContext.Provider>
     );
 }
 

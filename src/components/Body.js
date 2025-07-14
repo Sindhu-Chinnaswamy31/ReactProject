@@ -1,11 +1,12 @@
 import RestaurantCard, { withPromotedLabel } from "./RestroCard";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
 import Shimmer from "./Shimmer";
 import {SWIGGY_API_URL} from "../utils/contants";
 import {Link} from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 import {restaurantList} from "../utils/mockData";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -36,6 +37,8 @@ const Body = () => {
         return <h1>Offline, please check your internet connection</h1>
     }
 
+    const { loggedInUser, setUserName } = useContext(UserContext);
+
     //conditional rendering : rendering based on condition
     if(listOfRestaurants.length === 0){
         return <Shimmer/>
@@ -61,6 +64,15 @@ const Body = () => {
                     );
                     setListOfRestaurants(filteredRestaurants);
                 }}/>
+            </div>
+            <div className="m-4 p-2">   
+                <label className="relative top-0 bottom-200 m-2 p-2 w-200">User Name: </label>
+                <input
+                    type="text"
+                    className="relative top-0 bottom-200 border border-black m-4 p-2 w-200"
+                    value={loggedInUser}
+                    onChange={(event) => setUserName(event.target.value)}
+                />
             </div>
         </div>
         <div className="flex flex-wrap m-10 sm:justify-center">

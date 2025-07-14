@@ -1,7 +1,6 @@
-import ItemList from "./itemList";
+import ItemList from "./ItemList";
 import { useState } from "react";
-const ResCategory = ({data, showItemsData,setShowIndex}) => {
-
+const ResCategory = ({data, showItemsData,setShowIndex, dummy_data}) => {
     // const [showItems, setShowItems] = useState(showItemsData);
     const handleClick = () => {
        setShowIndex();
@@ -14,7 +13,7 @@ const ResCategory = ({data, showItemsData,setShowIndex}) => {
                     {data.card.title} ({data.card.itemCards.length})
                 </span>
                 <span className="text-lg cursor-pointer ml-auto">{showItemsData ? "⬆️" : "⬇️"}</span>
-                {showItemsData && <ItemList data={data.card.itemCards}/> }
+                {showItemsData && <ItemList data={data.card.itemCards} dummy_data={dummy_data}/> }
             </div>
         </div>
     )

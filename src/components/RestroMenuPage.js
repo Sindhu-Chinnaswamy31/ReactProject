@@ -13,6 +13,8 @@ const RestroMenuPage = () => {
     const [showIndex, setShowIndex] = useState(null);
     // const resInfo = useRestrurantMenu(resId);
     console.log(resInfo);
+
+    const dummy = "dummy data";
     
     //trying to abstract the code of useEffect
     // useEffect(() => {
@@ -48,7 +50,8 @@ const RestroMenuPage = () => {
             {category.map((category, index) => (
                 <ResCategory key={index} data={category.card} 
                 showItemsData={showIndex === index ? true : false}
-                setShowIndex={() => showIndex === index ? setShowIndex(null) : setShowIndex(index)}/>
+                setShowIndex={() => showIndex === index ? setShowIndex(null) : setShowIndex(index)}
+                dummy_data = {dummy}/>
             ))}
 
             <h3 className="text-2xl font-semibold mb-3 border-b pb-1 border-gray-200">Menu</h3>
