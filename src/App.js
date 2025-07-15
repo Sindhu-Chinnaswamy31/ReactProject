@@ -11,6 +11,8 @@ import RestroMenuPage from "./components/RestroMenuPage";
 import Shimmer from "./components/Shimmer";
 import '../index.css';
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 // import Grocery from "./components/Grocery";
 //  function Outlet(props: OutletProps): React.ReactElement | null
 // import Outlet
@@ -47,14 +49,16 @@ const AppLayout = () => {
         setUserName(data.name);
     }, [])
     return (
-        <UserContext.Provider value={{loggedInUser: userName, setUserName}}>  
-            <div className="app" > 
-                {/* <UserContext.Provider value={{loggedInUser: "Gurshreetha"}}>   */}
-                    <HeaderComponent />
-                {/* </UserContext.Provider> */}
-                <Outlet />
-            </div>
-        </UserContext.Provider>
+        <Provider store={appStore}>
+            <UserContext.Provider value={{loggedInUser: userName, setUserName}}>  
+                <div className="app" > 
+                    {/* <UserContext.Provider value={{loggedInUser: "Gurshreetha"}}>   */}
+                        <HeaderComponent />
+                    {/* </UserContext.Provider> */}
+                    <Outlet />
+                </div>
+            </UserContext.Provider>
+        </Provider>
     );
 }
 

@@ -173,5 +173,12 @@ session - 11
 - Higher order component is a function that takes a component and return a component.
       
 
+- session - 12 (Redux toolkit)
+  Install @reduxjs/toolkit and react-redux
+  - Build our store
+  - Connect our store to our app
+  - Slice (Cart slice)
+  - Dispatch (action)
+  - Read the data using Selector
 
  
